@@ -23,12 +23,6 @@ public class Weapon {
     }
     
     public String toString(){
-        String output = "W";
-        output += "[";
-        output += Float.toString(power);
-        output += ", ";
-        output += Integer.toString(uses);
-        output += "]";
-        return output;
+        return "W[" + power + ", " + uses + "]";
     }
 }
