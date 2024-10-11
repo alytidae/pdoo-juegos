@@ -10,8 +10,8 @@ public class Shield {
     private float protection;
     private int uses;
     
-    public Shield(float protection, int uses){
-        this.protection = power;
+    public Shield (float protection, int uses){
+        this.protection = protection;
         this.uses = uses;
     }
 
@@ -24,6 +24,7 @@ public class Shield {
         }
     }
     
+    @Override
     public String toString() {
         return "S[" + protection + ", " + uses + "]";
     }

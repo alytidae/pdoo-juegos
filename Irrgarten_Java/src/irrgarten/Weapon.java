@@ -22,6 +22,7 @@ public class Weapon {
         }
     }
     
+    @Override
     public String toString(){
         return "W[" + power + ", " + uses + "]";
     }

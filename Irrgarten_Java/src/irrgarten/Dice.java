@@ -6,14 +6,14 @@ package irrgarten;
 import java.util.Random;
 public class Dice {
     private static int MAX_USES = 5;
-    private static float MAX_INTELLIGENCE = 10.0;
-    private static float MAX_STRENGTH = 10.0;
-    private static float RESURRECT_PROB = 0.3;
+    private static float MAX_INTELLIGENCE = 10.0f;
+    private static float MAX_STRENGTH = 10.0f;
+    private static float RESURRECT_PROB = 0.3f;
     private static int WEAPONS_REWARD = 2;
     private static int SHIELDS_REWARD = 3;
     private static int HEALTH_REWARD = 5;
-    private static float MAX_ATTACK = 3.0;
-    private static float MAX_SHIELD = 2.0;
+    private static float MAX_ATTACK = 3.0f;
+    private static float MAX_SHIELD = 2.0f;
     
     private static Random generator = new Random();
     
@@ -30,8 +30,8 @@ public class Dice {
     public static int usesLeft(){ return generator.nextInt(1 + MAX_USES); }
     public float intensity(float competence){ return generator.nextFloat() * competence; }
     public static boolean discardElement(int uses_left){
-        float keepProbability = (1.0*uses_left)/MAX_USES;
-        return (generator.nextFloat() <= keepProbability);
+        double keepProbability = (1.0*uses_left)/MAX_USES;
+        return (generator.nextFloat() >= keepProbability);
     }
     
     
