@@ -42,6 +42,7 @@ public class GameState {
         return log;
     }
 
+    @Override
     public String toString() {
         return "Labyrinth: " + labyrinth + ", Players: " + players + ", Monsters: " + monsters +
                 ", Current Player: " + currentPlayer + ", Winner: " + winner + ", Log: " + log;

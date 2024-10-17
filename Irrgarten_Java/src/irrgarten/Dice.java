@@ -28,7 +28,7 @@ public class Dice {
     public static float weaponPower(){ return generator.nextFloat() * MAX_ATTACK; }
     public static float shieldPower(){ return generator.nextFloat() * MAX_SHIELD; }
     public static int usesLeft(){ return generator.nextInt(1 + MAX_USES); }
-    public float intensity(float competence){ return generator.nextFloat() * competence; }
+    public static float intensity(float competence){ return generator.nextFloat() * competence; }
     public static boolean discardElement(int uses_left){
         double keepProbability = (1.0*uses_left)/MAX_USES;
         return (generator.nextFloat() >= keepProbability);
