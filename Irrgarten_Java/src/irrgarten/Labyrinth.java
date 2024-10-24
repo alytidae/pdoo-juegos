@@ -4,7 +4,6 @@
  */
 package irrgarten;
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Labyrinth {
@@ -111,12 +110,7 @@ public class Labyrinth {
     }
 
     private int[] randomEmptyPos() {
-        Random random = new Random();
-        int[] pos = new int[] { -1, -1 };
-        while (!emptyPos(pos[0], pos[1])) {
-            pos[0] = random.nextInt(nRows);
-            pos[1] = random.nextInt(nCols);
-        }
+        int[] pos = new int[] { Dice.randomPos(nRows), Dice.randomPos(nRows) };
         return pos;
     }
 
