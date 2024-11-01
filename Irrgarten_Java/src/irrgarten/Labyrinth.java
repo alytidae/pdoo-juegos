@@ -13,6 +13,8 @@ public class Labyrinth {
     public static char MONSTER_CHAR = 'M';
     public static char COMBAT_CHAR = 'C';
     public static char EXIT_CHAR = 'E';
+    private static int ROW = 0;
+    private static int COL = 1;
 
     private int nRows;
     private int nCols;
@@ -127,18 +129,78 @@ public class Labyrinth {
     }
 
     public void spreadPlayers(ArrayList<Player> players) {
+        for(int i = 0; i < players.size(); i++){
+            int[] pos = randomEmptyPos();
+            putPlayer2D(-1, -1, pos[ROW], pos[COL], players.get(i));
+        }
     }
 
-    public void putPlayer(Directions direction, Player player) {
+    public Monster putPlayer(Directions direction, Player player) {
+        int oldRow = player.getRow();
+        int oldCol = player.getCol();
+        int[] newPos = dir2Pos(oldRow, oldCol, direction);
+        Monster output = putPlayer2D(oldRow, oldCol, newPos[ROW], newPos[COL], player);
+        return output;
     }
 
     public void addBlock(Orientation orientation, int startRow, int startCol, int length) {
+        int incRow = 0;
+        int incCol = 0;
+        if(orientation == Orientation.HORIZONTAL){
+            incRow = 1;
+        } else {
+            incCol = 1;
+        }
+        
+        int row = startRow;
+        int col = startCol;
+        
+        while (posOK(row, col) && length > 0){
+            labyrinth[row][col] = BLOCK_CHAR;
+            row += incRow;
+            col += incCol;
+            length--;
+        }
     }
 
     public ArrayList<Directions> validMoves(int row, int col) {
-        return new ArrayList<>();
+        ArrayList<Directions> output = new ArrayList<Directions>();
+        if(canStepOn(row+1, col)){
+            output.add(Directions.DOWN);
+        }
+        if(canStepOn(row-1, col)){
+            output.add(Directions.UP);
+        }
+        if(canStepOn(row, col-1)){
+            output.add(Directions.LEFT);
+        }
+        if(canStepOn(row, col+1)){
+            output.add(Directions.RIGHT);
+        }
+        return output;
     }
 
-    private void putPlayer2D() {
+    private Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player) {
+        Monster output = null;
+        if(canStepOn(row, col)){
+            if(posOK(oldRow, oldCol)){
+                Player p = players[oldRow][oldCol];
+                if(p == player){
+                    updateOldPos(oldRow, oldCol);
+                    players[oldRow][oldCol] = null;
+                }
+            }
+            
+            if(monsterPos(row, col)){
+                labyrinth[row][col] = COMBAT_CHAR;
+                output = monsters[row][col];
+            } else {
+                char number = player.getNumber();
+                labyrinth[row][col] = number;
+            }
+        }
+        players[row][col] = player;
+        player.setPos(row, col);
+        return output;
     }
 }

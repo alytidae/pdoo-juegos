@@ -44,6 +44,10 @@ public class Player {
         return col;
     }
     
+    public char getNumber(){
+        return number;
+    }
+    
     public void setPos(int row, int col){
         this.row = row;
         this.col = col; // TODO: this probably needs some checking before setting the values
