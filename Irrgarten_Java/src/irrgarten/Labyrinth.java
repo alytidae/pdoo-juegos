@@ -146,7 +146,7 @@ public class Labyrinth {
     public void addBlock(Orientation orientation, int startRow, int startCol, int length) {
         int incRow = 0;
         int incCol = 0;
-        if(orientation == Orientation.HORIZONTAL){
+        if(orientation == Orientation.VERTICAL){
             incRow = 1;
         } else {
             incCol = 1;
