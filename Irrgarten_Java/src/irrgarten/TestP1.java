@@ -6,14 +6,14 @@ package irrgarten;
 
 public class TestP1 {
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         System.out.println("== SHIELD / WEAPON TESTS ==");
         shield_weapon_tests();
         System.out.println("== DICE TESTS ==");
         dice_tests();
         System.out.println("== GAMESTATE CLASS TESTS ==");
         gamestate_tests();
-    }
+    }*/
     
     private static void shield_weapon_tests() {
         Shield S = new Shield(5.0f,3);
