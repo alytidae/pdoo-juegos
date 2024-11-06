@@ -147,7 +147,14 @@ public class Game {
     }
     
     private void manageResurrection(){
-        throw new UnsupportedOperationException();
+        boolean resurect = Dice.resurrectPlayer();
+        
+        if (resurect){
+            currentPlayer.ressurect();
+            logResurrected();
+        }else{
+            logPlayerSkipTurn();
+        }
     }
 }
 
