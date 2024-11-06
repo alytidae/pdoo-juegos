@@ -71,11 +71,6 @@ public class Player {
     }
     
     private boolean manageHit(float receivedAttack){
-        throw new UnsupportedOperationException();
-    }
-    
-    public boolean defend(float receivedAttack){
-        manageHit(receivedAttack);
         float defend = defensiveEnergy();
         if (defend < receivedAttack){
             gotWounded();
@@ -93,6 +88,10 @@ public class Player {
         }
         
         return lose;
+    }
+    
+    public boolean defend(float receivedAttack){
+        return manageHit(receivedAttack);
     }
     
     @Override
