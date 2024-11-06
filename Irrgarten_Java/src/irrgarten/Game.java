@@ -143,7 +143,12 @@ public class Game {
     }
     
     private void manageReward(GameCharacter winner){
-        throw new UnsupportedOperationException();
+        if (winner == GameCharacter.PLAYER){
+            currentPlayer.receiveReward();
+            logPlayerWon();
+        }else{
+            logMonsterWon();
+        }
     }
     
     private void manageResurrection(){
