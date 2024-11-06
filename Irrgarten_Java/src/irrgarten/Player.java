@@ -150,7 +150,20 @@ public class Player {
     }
     
     public void receiveReward(){
-        throw new UnsupportedOperationException();
+        int wReward = Dice.weaponsReward();
+        int sReward = Dice.shieldsReward();
+        
+        for (int i = 1; i < wReward; i++){
+            Weapon wnew = newWeapon();
+            receiveWeapon(wnew);
+        }
+        for (int i = 1; i < sReward; i++){
+            Shield snew = newShield();
+            receiveShield(snew);
+        }
+        
+        int extraHealth = Dice.healthReward();
+        health += extraHealth;
     }
     
     private void receiveWeapon(Weapon w){
