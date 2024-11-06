@@ -112,7 +112,12 @@ public class Game {
     }
     
     private Directions actualDirection(Directions preferredDirection){
-        throw new UnsupportedOperationException();
+        int row = currentPlayer.getRow();
+        int col = currentPlayer.getCol();
+        
+        ArrayList<Directions> validMoves = labyrinth.validMoves(row, col);
+        
+        return currentPlayer.move(preferredDirection, validMoves);
     }
     
     private GameCharacter combat(Monster monster){
