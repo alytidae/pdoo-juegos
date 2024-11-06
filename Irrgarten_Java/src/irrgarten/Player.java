@@ -139,7 +139,14 @@ public class Player {
     }
     
     public Directions move(Directions direction, ArrayList<Directions> validMoves){
-        throw new UnsupportedOperationException();
+        int size = validMoves.size();
+        boolean contained = validMoves.contains(direction);
+        
+        if (size > 0 && !contained){
+            return validMoves.get(0);
+        }else{
+            return direction;
+        }
     }
     
     public void receiveReward(){
