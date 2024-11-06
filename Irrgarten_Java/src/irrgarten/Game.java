@@ -108,7 +108,33 @@ public class Game {
     }
     
     public boolean nextStep(Directions preferredDirection){
-        throw new UnsupportedOperationException();
+        log = "";
+        
+        boolean dead = currentPlayer.dead();
+        
+        if (!dead){
+            Directions directions = actualDirection(preferredDirection);
+            if (directions != preferredDirection){
+                logPlayerNoOrders();
+            }
+            
+            Monster monster = labyrinth.putPlayer(directions, currentPlayer);
+            if (monster == null){
+                logNoMonster();
+            }else{
+                GameCharacter winner = combat(monster);
+                manageReward(winner);
+            }
+        }else{
+            manageResurrection();
+        }
+        
+        boolean endGame = finished();
+        if (!endGame){
+            nextPlayer();
+        }
+        
+        return endGame;
     }
     
     private Directions actualDirection(Directions preferredDirection){
