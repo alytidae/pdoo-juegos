@@ -121,7 +121,25 @@ public class Game {
     }
     
     private GameCharacter combat(Monster monster){
-        throw new UnsupportedOperationException();
+        int rounds = 0;
+        GameCharacter winner = GameCharacter.PLAYER;
+        float playerAttack = currentPlayer.attack();
+        boolean lose = monster.defend(playerAttack);
+        
+        while (!(lose) && (rounds < MAX_ROUNDS)){
+            winner = GameCharacter.MONSTER;
+            rounds++;
+            float monsterAttack = monster.attack();
+            lose = currentPlayer.defend(monsterAttack);
+            if (!lose){
+                playerAttack = currentPlayer.attack();
+                lose = monster.defend(playerAttack);
+                winner = GameCharacter.PLAYER;
+            }
+        }
+        
+        logRounds(rounds, MAX_ROUNDS);
+        return winner;
     }
     
     private void manageReward(GameCharacter winner){
