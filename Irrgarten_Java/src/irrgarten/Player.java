@@ -75,7 +75,24 @@ public class Player {
     }
     
     public boolean defend(float receivedAttack){
-        return manageHit(receivedAttack);
+        manageHit(receivedAttack);
+        float defend = defensiveEnergy();
+        if (defend < receivedAttack){
+            gotWounded();
+            incConsecutiveHits();
+        }else{
+            resetHits();
+        }
+        
+        boolean lose;
+        if ((consecutiveHits == HITS2LOSE) || dead()){
+            resetHits();
+            lose = true;
+        }else{
+            lose = false;
+        }
+        
+        return lose;
     }
     
     @Override
