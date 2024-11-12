@@ -194,7 +194,7 @@ public class Labyrinth {
             if(monsterPos(row, col)){
                 labyrinth[row][col] = COMBAT_CHAR;
                 output = monsters[row][col];
-            } else {
+            } else if (!exitPos(row, col)) {
                 char number = player.getNumber();
                 labyrinth[row][col] = number;
             }
