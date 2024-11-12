@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Game {
     private static final int MAX_ROUNDS = 10;
-    private static final int NUM_ROWS = 20; //Not sure where else to put these values, best not to leave them as magic numbers
-    private static final int NUM_COLS = 30; 
+    private static final int NUM_ROWS = 10; //Not sure where else to put these values, best not to leave them as magic numbers
+    private static final int NUM_COLS = 10; 
     private int currentPlayerIndex;
     private String log;
     private Labyrinth labyrinth;
@@ -65,7 +65,7 @@ public class Game {
     
     private void configureLabyrinth(){
         //placeholder (obviously)
-        final int NUM_MONSTERS = 2;
+        final int NUM_MONSTERS = 1;
         labyrinth.addBlock(Orientation.HORIZONTAL, 2, 2, 2);
         for(int i = 0; i < NUM_MONSTERS; i++){
             Monster m = new Monster("MONSTER " + Integer.toString(i), Dice.randomIntelligence(), Dice.randomStrength());

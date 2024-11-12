@@ -27,6 +27,8 @@ public class Player {
         this.strength = strength;
         this.name = "Player #" + number;
         this.health = INITIAL_HEALTH;
+        this.weapons = new ArrayList<Weapon>();
+        this.shields = new ArrayList<Shield>();
     }
     
     public void ressurect(){
