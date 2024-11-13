@@ -66,7 +66,11 @@ public class Game {
     private void configureLabyrinth(){
         //placeholder (obviously)
         final int NUM_MONSTERS = 1;
-        labyrinth.addBlock(Orientation.HORIZONTAL, 2, 2, 2);
+        /*for(int i = 0; i < 9; i++){
+            labyrinth.addBlock(Orientation.HORIZONTAL, i, 0, NUM_ROWS);
+        }
+        labyrinth.addBlock(Orientation.HORIZONTAL, 9, 0, NUM_ROWS-2);*/
+        labyrinth.addBlock(Orientation.HORIZONTAL, 3, 2, 5);
         for(int i = 0; i < NUM_MONSTERS; i++){
             Monster m = new Monster("MONSTER " + Integer.toString(i), Dice.randomIntelligence(), Dice.randomStrength());
             monsters.add(m);

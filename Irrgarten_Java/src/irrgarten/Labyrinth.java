@@ -112,7 +112,11 @@ public class Labyrinth {
     }
 
     private int[] randomEmptyPos() {
-        int[] pos = new int[] { Dice.randomPos(nRows), Dice.randomPos(nRows) };
+        int[] pos = new int[2];
+        while(!emptyPos(pos[ROW], pos[COL])){
+            pos[ROW] = Dice.randomPos(nRows);
+            pos[COL] = Dice.randomPos(nCols);
+        }
         return pos;
     }
 
