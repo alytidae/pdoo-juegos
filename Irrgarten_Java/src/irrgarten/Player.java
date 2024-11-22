@@ -42,7 +42,7 @@ public class Player extends LabyrinthCharacter{
         return number;
     }
     
-    private float sumWeapons(){
+    protected float sumWeapons(){
         float output = 0f;
         for(int i = 0; i < weapons.size(); i++){
             Weapon wpn = weapons.get(i);
@@ -98,7 +98,7 @@ public class Player extends LabyrinthCharacter{
         return new Shield(Dice.shieldPower(), Dice.usesLeft());
     }
     
-    private float sumShields(){
+    protected float sumShields(){
         float output = 0f;
         for(int i = 0; i < shields.size(); i++){
             Shield shl = shields.get(i);
@@ -107,7 +107,7 @@ public class Player extends LabyrinthCharacter{
         return output;
     }
     
-    private float defensiveEnergy(){
+    protected float defensiveEnergy(){
         return (getIntelligence() + sumShields());
     }
     
