@@ -4,35 +4,22 @@
  */
 package irrgarten;
 
-public class Monster {
+public class Monster extends LabyrinthCharacter{
     private static int INITIAL_HEALTH = 5;
     
-    private String name;
-    private float intelligence;
-    private float strength;
-    private float health;
-    private int row = -1;
-    private int col = -1;
-    
     public Monster(String name, float intelligence, float strength) {
-        this.name = name;
-        this.intelligence = intelligence;
-        this.strength = strength;
-        this.health = INITIAL_HEALTH;
+        super(name, intelligence, strength, INITIAL_HEALTH);
     }
     
-    public boolean dead(){
-        return this.health <= 0;
-    }
-    
+    @Override
     public float attack(){
-        return Dice.intensity(strength);
+        return Dice.intensity(getStrength());
     }
     
     public boolean defend(float receivedAttack){
         boolean isDead = dead();
         if (!isDead){
-            float defensiveEnergy = Dice.intensity(intelligence);
+            float defensiveEnergy = Dice.intensity(getIntelligence());
             if (defensiveEnergy < receivedAttack){
                 gotWounded();
                 isDead = dead();
@@ -42,20 +29,10 @@ public class Monster {
         return isDead;
     }
     
-    public void setPos(int row, int col){
-        this.row = row;
-        this.col = col;
-    }
-    
     @Override
     public String toString() {
-        return "Monster: " + name + ", intelligence: " + intelligence + ", strength: " + strength +
-                ", health: " + health + ", [row, col]: " + "[" + row + ", " + col + "]";
+        return "Monster " + super.toString();
     } 
-    
-    public void gotWounded(){
-        health -= 1;
-    }
 }
 
 
