@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public abstract class CardDeck<TYPE>{ //TODO: after implementing class CombatElement, add restriction TYPE extends CombatElement
     private ArrayList<TYPE> cardDeck;
-    protected final int NUMBER_OF_CARDS = 10;
+    protected static final int NUMBER_OF_CARDS = 10;
     
     public CardDeck(){
         cardDeck = new ArrayList<>();

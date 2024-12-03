@@ -15,12 +15,16 @@ public class Player extends LabyrinthCharacter{
     private int consecutiveHits = 0;
     private ArrayList<Weapon> weapons;
     private ArrayList<Shield> shields;
+    private WeaponCardDeck weaponCardDeck;
+    private ShieldCardDeck shieldCardDeck;
     
     public Player(char number, float intelligence, float strength){
         super("Player #" + number, intelligence, strength, INITIAL_HEALTH);
         this.number = number;
         this.weapons = new ArrayList<Weapon>();
         this.shields = new ArrayList<Shield>();
+        weaponCardDeck = new WeaponCardDeck();
+        shieldCardDeck = new ShieldCardDeck();
     }
     
     public Player(Player other){
@@ -91,11 +95,11 @@ public class Player extends LabyrinthCharacter{
     }
     
     private Weapon newWeapon(){
-        return new Weapon(Dice.weaponPower(), Dice.usesLeft());
+        return weaponCardDeck.nextCard();
     }
     
     private Shield newShield(){
-        return new Shield(Dice.shieldPower(), Dice.usesLeft());
+        return shieldCardDeck.nextCard();
     }
     
     protected float sumShields(){
