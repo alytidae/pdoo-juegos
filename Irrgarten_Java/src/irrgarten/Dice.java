@@ -4,6 +4,8 @@
  */
 package irrgarten;
 import java.util.Random;
+import java.util.ArrayList;
+
 public class Dice {
     private static int MAX_USES = 5;
     private static float MAX_INTELLIGENCE = 10.0f;
@@ -33,6 +35,12 @@ public class Dice {
         double keepProbability = (1.0*uses_left)/MAX_USES;
         return (generator.nextFloat() >= keepProbability);
     }
-    
-    
+    public static Directions nextStep(Directions preference, ArrayList<Directions> validMoves, float intelligence){
+        if (generator.nextFloat() < (intelligence / MAX_INTELLIGENCE)) {
+            return preference;
+        }else{
+            int idx = generator.nextInt(0, validMoves.size());
+            return validMoves.get(idx);
+        }
+    }
 }
