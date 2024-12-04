@@ -207,4 +207,8 @@ public class Labyrinth {
         player.setPos(row, col);
         return output;
     }
+    
+    public void replace_player(Player old_player, Player new_player){
+        players[old_player.getRow()][old_player.getCol()] = new_player;
+    }
 }

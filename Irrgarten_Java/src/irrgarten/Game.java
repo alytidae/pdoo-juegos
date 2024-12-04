@@ -185,7 +185,12 @@ public class Game {
         boolean resurect = Dice.resurrectPlayer();
         
         if (resurect){
-            currentPlayer.ressurect();
+            Player old_player = currentPlayer;
+            FuzzyPlayer fuzzy = new FuzzyPlayer(currentPlayer);
+            fuzzy.ressurect();
+            currentPlayer = fuzzy;
+            players.set(currentPlayerIndex, fuzzy);
+            labyrinth.replace_player(old_player, fuzzy);
             logResurrected();
         }else{
             logPlayerSkipTurn();
