@@ -6,7 +6,7 @@ package irrgarten;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public abstract class CardDeck<TYPE>{ //TODO: after implementing class CombatElement, add restriction TYPE extends CombatElement
+public abstract class CardDeck<TYPE extends CombatElement>{
     private ArrayList<TYPE> cardDeck;
     protected static final int NUMBER_OF_CARDS = 10;
     
