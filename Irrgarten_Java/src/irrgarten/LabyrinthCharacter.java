@@ -16,7 +16,7 @@ public abstract class LabyrinthCharacter {
         this.name = name;
         this.intelligence = intelligence;
         this.strength = strength;
-        this.name = name;
+        this.health = health;
         row = col = UNINITIALIZED_POS;
     }
     

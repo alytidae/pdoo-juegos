@@ -25,6 +25,10 @@ public class Player extends LabyrinthCharacter{
         this.shields = new ArrayList<Shield>();
         weaponCardDeck = new WeaponCardDeck();
         shieldCardDeck = new ShieldCardDeck();
+        if(weaponCardDeck == null || shieldCardDeck == null){
+            System.out.println("fucked up");
+            int x = 1 / 0;
+        }
     }
     
     public Player(Player other){
@@ -133,6 +137,7 @@ public class Player extends LabyrinthCharacter{
             return direction;
         }
     }
+    
     
     public void receiveReward(){
         int wReward = Dice.weaponsReward();

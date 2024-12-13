@@ -12,10 +12,10 @@ public class FuzzyPlayer extends Player {
         super(otro);
     }
     
-    public Directions move(Directions direction, Directions[] validMoves){
-        ArrayList<Directions> validMovesList = new ArrayList<>(Arrays.asList(validMoves));
-        Directions ideal_move = super.move(direction, validMovesList);
-        return Dice.nextStep(ideal_move, validMovesList, getIntelligence());
+    @Override
+    public Directions move(Directions direction, ArrayList<Directions> validMoves){
+        Directions ideal_move = super.move(direction, validMoves);
+        return Dice.nextStep(ideal_move, validMoves, getIntelligence());
     } 
     
     @Override
