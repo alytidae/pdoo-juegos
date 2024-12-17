@@ -56,15 +56,19 @@ public class GraphicUI extends javax.swing.JFrame implements UI{ //TODO: ui
 
         playersTextBox.setEditable(false);
         playersTextBox.setColumns(20);
+        playersTextBox.setLineWrap(true);
         playersTextBox.setRows(5);
+        playersTextBox.setWrapStyleWord(true);
         jScrollPane2.setViewportView(playersTextBox);
 
         monstersTextBox.setEditable(false);
         monstersTextBox.setColumns(20);
+        monstersTextBox.setLineWrap(true);
         monstersTextBox.setRows(5);
+        monstersTextBox.setWrapStyleWord(true);
         jScrollPane3.setViewportView(monstersTextBox);
 
-        currentPlayerText.setForeground(new java.awt.Color(204, 255, 255));
+        currentPlayerText.setForeground(new java.awt.Color(255, 0, 255));
         currentPlayerText.setText("Current Player: XXXX");
 
         logTextBox.setEditable(false);
@@ -76,7 +80,7 @@ public class GraphicUI extends javax.swing.JFrame implements UI{ //TODO: ui
         TITLE.setText("IRRGARTEN");
 
         gameOverText.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        gameOverText.setForeground(new java.awt.Color(255, 255, 255));
+        gameOverText.setForeground(new java.awt.Color(0, 153, 0));
         gameOverText.setText("GAME OVER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
